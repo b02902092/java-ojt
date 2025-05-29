@@ -1,24 +1,23 @@
-package jp.upward.javaOjt.daos;
+package jp.upward.javaOjt.repositories.daos;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.List;
-import jp.upward.javaOjt.beans.AuthorWithBookBean;
-import jp.upward.javaOjt.entities.QAuthor;
-import jp.upward.javaOjt.entities.QBook;
+import jp.upward.javaOjt.beans.dtos.AuthorWithBookDTO;
+import jp.upward.javaOjt.beans.entities.QAuthor;
+import jp.upward.javaOjt.beans.entities.QBook;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 
-@Repository
+// @Repository
 @RequiredArgsConstructor
 public class AuthorDaoImpl implements AuthorDao {
 
   private final JPAQueryFactory jpaQueryFactory;
 
-  public List<AuthorWithBookBean> getAuthorWithBookBeansById(Integer id) {
+  public List<AuthorWithBookDTO> getAuthorWithBookDTOsById(Integer id) {
     return jpaQueryFactory.select(
         Projections.constructor(
-          AuthorWithBookBean.class,
+          AuthorWithBookDTO.class,
           QAuthor.author,
           QBook.book
         )

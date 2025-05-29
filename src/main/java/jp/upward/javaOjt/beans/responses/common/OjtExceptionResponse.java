@@ -1,4 +1,4 @@
-package jp.upward.javaOjt.beans;
+package jp.upward.javaOjt.beans.responses.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

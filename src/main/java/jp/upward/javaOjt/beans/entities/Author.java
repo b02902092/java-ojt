@@ -1,4 +1,4 @@
-package jp.upward.javaOjt.entities;
+package jp.upward.javaOjt.beans.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

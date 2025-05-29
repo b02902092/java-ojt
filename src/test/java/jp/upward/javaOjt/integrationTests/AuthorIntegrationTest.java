@@ -2,8 +2,8 @@ package jp.upward.javaOjt.integrationTests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jp.upward.javaOjt.DBTestBase;
-import jp.upward.javaOjt.beans.GetAuthorResponse;
-import jp.upward.javaOjt.beans.OjtExceptionResponse;
+import jp.upward.javaOjt.beans.responses.author.GetAuthorResponse;
+import jp.upward.javaOjt.beans.responses.common.OjtExceptionResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

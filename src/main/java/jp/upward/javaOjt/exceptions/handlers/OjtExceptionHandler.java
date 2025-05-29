@@ -1,9 +1,8 @@
-package jp.upward.javaOjt.exceptionHandlers;
+package jp.upward.javaOjt.exceptions.handlers;
 
-import jp.upward.javaOjt.beans.OjtExceptionResponse;
+import jp.upward.javaOjt.beans.responses.common.OjtExceptionResponse;
 import jp.upward.javaOjt.exceptions.OjtExceptionBase;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,7 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 @Slf4j
 public class OjtExceptionHandler extends ResponseEntityExceptionHandler {
-  
+
   /**
    * OJT Exception Handler
    *
@@ -21,12 +20,13 @@ public class OjtExceptionHandler extends ResponseEntityExceptionHandler {
    * @return error response
    */
   @ExceptionHandler({OjtExceptionBase.class})
-  public ResponseEntity<Object> handleNotFoundException(OjtExceptionBase ex) {
-    return new ResponseEntity<>(
-      new OjtExceptionResponse(ex.getExceptionMessage(), ex.getStatusCode().value()),
-      new HttpHeaders(),
-      ex.getStatusCode()
-    );
+  public ResponseEntity<Object> handleOjtException(OjtExceptionBase ex) {
+    return ResponseEntity
+      .status(ex.getStatusCode())
+      .body(new OjtExceptionResponse(
+        ex.getExceptionMessage(),
+        ex.getStatusCode().value())
+      );
   }
 
   /**
@@ -38,11 +38,11 @@ public class OjtExceptionHandler extends ResponseEntityExceptionHandler {
   @ExceptionHandler({Exception.class})
   public ResponseEntity<Object> handleInternalServerException(Exception ex) {
     log.error("Internal server error: {}", ex.getMessage(), ex);
-    return new ResponseEntity<>(
-      new OjtExceptionResponse(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value()),
-      new HttpHeaders(),
-      HttpStatus.INTERNAL_SERVER_ERROR
-    );
+    return ResponseEntity.internalServerError()
+      .body(new OjtExceptionResponse(
+        ex.getMessage(),
+        HttpStatus.INTERNAL_SERVER_ERROR.value())
+      );
   }
 
 }

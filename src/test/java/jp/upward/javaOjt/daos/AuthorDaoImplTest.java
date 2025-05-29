@@ -3,7 +3,8 @@ package jp.upward.javaOjt.daos;
 import java.time.LocalDate;
 import java.util.List;
 import jp.upward.javaOjt.DBTestBase;
-import jp.upward.javaOjt.beans.AuthorWithBookBean;
+import jp.upward.javaOjt.beans.dtos.AuthorWithBookDTO;
+import jp.upward.javaOjt.repositories.daos.AuthorDaoImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ class AuthorDaoImplTest extends DBTestBase {
   void getAuthorWithBookBeanById() {
     int targetId = 1;
 
-    List<AuthorWithBookBean> result = authorDaoImpl.getAuthorWithBookBeansById(targetId);
+    List<AuthorWithBookDTO> result = authorDaoImpl.getAuthorWithBookDTOsById(targetId);
 
     Assertions.assertEquals(1, result.size());
     Assertions.assertEquals(targetId, result.getFirst().author().getId());

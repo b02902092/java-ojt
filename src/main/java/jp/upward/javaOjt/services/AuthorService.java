@@ -2,10 +2,10 @@ package jp.upward.javaOjt.services;
 
 import java.util.List;
 import java.util.Optional;
-import jp.upward.javaOjt.beans.AuthorWithBookBean;
-import jp.upward.javaOjt.beans.GetAuthorResponse;
-import jp.upward.javaOjt.entities.Author;
-import jp.upward.javaOjt.entities.AuthorPK;
+import jp.upward.javaOjt.beans.dtos.AuthorWithBookDTO;
+import jp.upward.javaOjt.beans.entities.Author;
+import jp.upward.javaOjt.beans.entities.AuthorPK;
+import jp.upward.javaOjt.beans.responses.author.GetAuthorResponse;
 import jp.upward.javaOjt.repositories.AuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class AuthorService {
     GetAuthorResponse response;
     // If withBooks is true, fetch the author along with their books
     if (withBooks) {
-      List<AuthorWithBookBean> beans = authorRepository.getAuthorWithBookBeansById(id);
+      List<AuthorWithBookDTO> beans = authorRepository.getAuthorWithBookDTOsById(id);
       if (beans.isEmpty()) {
         return GetAuthorResponse.notFoundResponse();
       }

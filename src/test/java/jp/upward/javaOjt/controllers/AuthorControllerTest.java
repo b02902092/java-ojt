@@ -1,6 +1,6 @@
 package jp.upward.javaOjt.controllers;
 
-import jp.upward.javaOjt.beans.GetAuthorResponse;
+import jp.upward.javaOjt.beans.responses.author.GetAuthorResponse;
 import jp.upward.javaOjt.services.AuthorService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

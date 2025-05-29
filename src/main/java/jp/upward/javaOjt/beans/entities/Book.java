@@ -1,4 +1,4 @@
-package jp.upward.javaOjt.entities;
+package jp.upward.javaOjt.beans.entities;
 
 
 import jakarta.persistence.Column;
@@ -9,28 +9,32 @@ import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users")
+@Table(name = "books")
 @Getter
 @Setter
-@IdClass(UserPK.class)
-public class User {
+@IdClass(BookPK.class)
+public class Book {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq_gen")
-  @SequenceGenerator(name = "users_seq_gen", sequenceName = "users_id_seq", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "books_seq_gen")
+  @SequenceGenerator(name = "books_seq_gen", sequenceName = "books_id_seq", allocationSize = 1)
   @Column(name = "id", nullable = false)
   private Integer id;
 
-  @Column(name = "name", nullable = false)
-  private String name;
+  @Column(name = "title", nullable = false)
+  private String title;
 
-  @Column(name = "email", nullable = true)
-  private String email;
+  @Column(name = "author_id", nullable = true)
+  private Integer authorId;
+
+  @Column(name = "published_at", nullable = true)
+  private LocalDate publishedAt;
 
   @Column(name = "created_timestamp", nullable = false)
   private ZonedDateTime createdTimestamp;

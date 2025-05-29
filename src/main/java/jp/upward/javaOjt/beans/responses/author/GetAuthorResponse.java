@@ -1,9 +1,9 @@
-package jp.upward.javaOjt.beans;
+package jp.upward.javaOjt.beans.responses.author;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
-import jp.upward.javaOjt.entities.Author;
+import jp.upward.javaOjt.beans.entities.Author;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;

@@ -2,11 +2,11 @@ package jp.upward.javaOjt.services;
 
 import java.util.List;
 import java.util.Optional;
-import jp.upward.javaOjt.beans.AuthorWithBookBean;
-import jp.upward.javaOjt.beans.GetAuthorResponse;
-import jp.upward.javaOjt.entities.Author;
-import jp.upward.javaOjt.entities.AuthorPK;
-import jp.upward.javaOjt.entities.Book;
+import jp.upward.javaOjt.beans.dtos.AuthorWithBookDTO;
+import jp.upward.javaOjt.beans.entities.Author;
+import jp.upward.javaOjt.beans.entities.AuthorPK;
+import jp.upward.javaOjt.beans.entities.Book;
+import jp.upward.javaOjt.beans.responses.author.GetAuthorResponse;
 import jp.upward.javaOjt.repositories.AuthorRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,8 +41,8 @@ class AuthorServiceTest {
     mockBook.setId(2);
     mockBook.setTitle("Mock Book Title");
 
-    AuthorWithBookBean mockBean = new AuthorWithBookBean(mockAuthor, mockBook);
-    Mockito.when(authorRepository.getAuthorWithBookBeansById(targetId))
+    AuthorWithBookDTO mockBean = new AuthorWithBookDTO(mockAuthor, mockBook);
+    Mockito.when(authorRepository.getAuthorWithBookDTOsById(targetId))
       .thenReturn(List.of(mockBean));
 
     // Call the service method
@@ -53,7 +53,7 @@ class AuthorServiceTest {
     Assertions.assertEquals(mockBean.author().getId(), response.getId());
     Assertions.assertEquals(1, response.getBooks().size());
     Assertions.assertEquals(mockBean.book().getId(), response.getBooks().getFirst().id());
-    Mockito.verify(authorRepository, Mockito.times(1)).getAuthorWithBookBeansById(targetId);
+    Mockito.verify(authorRepository, Mockito.times(1)).getAuthorWithBookDTOsById(targetId);
     Mockito.verify(authorRepository, Mockito.never()).findById(Mockito.any());
   }
 
@@ -74,7 +74,7 @@ class AuthorServiceTest {
     Assertions.assertNotNull(response);
     Assertions.assertEquals(mockAuthor.getId(), response.getId());
     Assertions.assertTrue(response.isExists());
-    Mockito.verify(authorRepository, Mockito.never()).getAuthorWithBookBeansById(targetId);
+    Mockito.verify(authorRepository, Mockito.never()).getAuthorWithBookDTOsById(targetId);
     Mockito.verify(authorRepository, Mockito.times(1)).findById(Mockito.any());
   }
 }
