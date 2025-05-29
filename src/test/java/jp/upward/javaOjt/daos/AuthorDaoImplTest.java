@@ -2,8 +2,8 @@ package jp.upward.javaOjt.daos;
 
 import java.time.LocalDate;
 import java.util.List;
+import jp.upward.javaOjt.DBTestBase;
 import jp.upward.javaOjt.beans.AuthorWithBookBean;
-import jp.upward.javaOjt.integrationTests.DBTestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

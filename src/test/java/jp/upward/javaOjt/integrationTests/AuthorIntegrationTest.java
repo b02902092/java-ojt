@@ -1,6 +1,7 @@
 package jp.upward.javaOjt.integrationTests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jp.upward.javaOjt.DBTestBase;
 import jp.upward.javaOjt.beans.GetAuthorResponse;
 import jp.upward.javaOjt.beans.OjtExceptionResponse;
 import org.junit.jupiter.api.Assertions;

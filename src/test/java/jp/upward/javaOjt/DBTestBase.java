@@ -1,4 +1,4 @@
-package jp.upward.javaOjt.integrationTests;
+package jp.upward.javaOjt;
 
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
