@@ -20,6 +20,14 @@ public class AuthorController {
 
   private final AuthorService authorService;
 
+  /**
+   * Retrieves an author by his ID.
+   *
+   * @param id        the ID of the author to retrieve
+   * @param withBooks whether to include the author's books in the response
+   * @return a ResponseEntity containing the GetAuthorResponse
+   * @throws OjtNotFoundException if the author does not exist
+   */
   @GetMapping("/{id}")
   public ResponseEntity<GetAuthorResponse> getAuthor(
     @PathVariable(value = "id") Integer id,

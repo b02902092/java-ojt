@@ -1,0 +1,226 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/authors/{id}": {
+      "get": {
+        "tags": [
+          "author-controller"
+        ],
+        "summary": "Retrieves an author by his ID.",
+        "description": "Retrieves an author by his ID.",
+        "operationId": "getAuthor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "the ID of the author to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "withBooks",
+            "in": "query",
+            "description": "whether to include the author\u0027s books in the response",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "a ResponseEntity containing the GetAuthorResponse",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAuthorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health-check/": {
+      "get": {
+        "tags": [
+          "health-check-controller"
+        ],
+        "operationId": "healthCheck",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "health-check-controller"
+        ],
+        "operationId": "healthCheck_2",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "health-check-controller"
+        ],
+        "operationId": "healthCheck_1",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "health-check-controller"
+        ],
+        "operationId": "healthCheck_3",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "options": {
+        "tags": [
+          "health-check-controller"
+        ],
+        "operationId": "healthCheck_6",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "head": {
+        "tags": [
+          "health-check-controller"
+        ],
+        "operationId": "healthCheck_5",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "health-check-controller"
+        ],
+        "operationId": "healthCheck_4",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Book": {
+        "type": "object",
+        "properties": {
+          "bookId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string"
+          },
+          "publishedAt": {
+            "type": "string"
+          }
+        }
+      },
+      "GetAuthorResponse": {
+        "type": "object",
+        "properties": {
+          "exists": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Book"
+            }
+          }
+        }
+      }
+    }
+  }
+}
