@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import java.time.ZonedDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @IdClass(UserPK.class)
-public class User {
+public class User extends EntityBase {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq_gen")
@@ -31,13 +30,4 @@ public class User {
 
   @Column(name = "email", nullable = true)
   private String email;
-
-  @Column(name = "created_timestamp", nullable = false)
-  private ZonedDateTime createdTimestamp;
-
-  @Column(name = "updated_timestamp", nullable = false)
-  private ZonedDateTime updatedTimestamp;
-
-  @Column(name = "deleted_timestamp", nullable = true)
-  private ZonedDateTime deletedTimestamp;
 }
