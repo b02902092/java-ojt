@@ -10,7 +10,6 @@ import jakarta.persistence.IdClass;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @IdClass(BookPK.class)
-public class Book {
+public class Book extends EntityBase {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "books_seq_gen")
@@ -35,13 +34,4 @@ public class Book {
 
   @Column(name = "published_at", nullable = true)
   private LocalDate publishedAt;
-
-  @Column(name = "created_timestamp", nullable = false)
-  private ZonedDateTime createdTimestamp;
-
-  @Column(name = "updated_timestamp", nullable = false)
-  private ZonedDateTime updatedTimestamp;
-
-  @Column(name = "deleted_timestamp", nullable = true)
-  private ZonedDateTime deletedTimestamp;
 }
