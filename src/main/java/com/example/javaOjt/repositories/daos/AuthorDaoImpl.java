@@ -1,14 +1,13 @@
 package com.example.javaOjt.repositories.daos;
 
-import com.querydsl.core.types.Projections;
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import java.util.List;
 import com.example.javaOjt.beans.dtos.AuthorWithBookDTO;
 import com.example.javaOjt.beans.entities.QAuthor;
 import com.example.javaOjt.beans.entities.QBook;
+import com.querydsl.core.types.Projections;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 
-// @Repository
 @RequiredArgsConstructor
 public class AuthorDaoImpl implements AuthorDao {
 
