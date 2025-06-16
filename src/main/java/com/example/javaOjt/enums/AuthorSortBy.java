@@ -17,20 +17,20 @@ public enum AuthorSortBy implements EnumBase {
   public String getCompareValue() {
     return StringUtils.replace(this.name(), "_", "");
   }
-}
+  
+  @Component
+  static class AuthorSortByConverter implements Converter<String, AuthorSortBy> {
 
-@Component
-class AuthorSortByConverter implements Converter<String, AuthorSortBy> {
-
-  @Override
-  public AuthorSortBy convert(@NonNull String source) {
-    for (AuthorSortBy e : AuthorSortBy.values()) {
-      if (e.getCompareValue().equalsIgnoreCase(
-        StringUtils.replace(source, "_", ""))
-      ) {
-        return e;
+    @Override
+    public AuthorSortBy convert(@NonNull String source) {
+      for (AuthorSortBy e : AuthorSortBy.values()) {
+        if (e.getCompareValue().equalsIgnoreCase(
+          StringUtils.replace(source, "_", ""))
+        ) {
+          return e;
+        }
       }
+      throw new IllegalArgumentException("Invalid AuthorSortBy value: " + source);
     }
-    throw new IllegalArgumentException("Invalid AuthorSortBy value: " + source);
   }
 }

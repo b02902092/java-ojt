@@ -17,21 +17,21 @@ public enum Order implements EnumBase {
   public String getCompareValue() {
     return StringUtils.replace(this.name(), "_", "");
   }
-}
+  
+  @Component
+  static class OrderConverter implements Converter<String, Order> {
 
-
-@Component
-class OrderConverter implements Converter<String, Order> {
-
-  @Override
-  public Order convert(@NonNull String source) {
-    for (Order e : Order.values()) {
-      if (e.getCompareValue().equalsIgnoreCase(
-        StringUtils.replace(source, "_", ""))
-      ) {
-        return e;
+    @Override
+    public Order convert(@NonNull String source) {
+      for (Order e : Order.values()) {
+        if (e.getCompareValue().equalsIgnoreCase(
+          StringUtils.replace(source, "_", ""))
+        ) {
+          return e;
+        }
       }
+      throw new IllegalArgumentException("Invalid Order value: " + source);
     }
-    throw new IllegalArgumentException("Invalid Order value: " + source);
   }
 }
+
