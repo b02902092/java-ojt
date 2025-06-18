@@ -18,6 +18,9 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    mockitoAgent {
+        transitive = false
+    }
 }
 
 repositories {
@@ -60,10 +63,14 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.8'
     annotationProcessor 'com.github.therapi:therapi-runtime-javadoc-scribe:0.15.0'
     implementation 'com.github.therapi:therapi-runtime-javadoc:0.15.0'
+
+    // Mockito
+    mockitoAgent 'org.mockito:mockito-core'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+    jvmArgs("-javaagent:${configurations.mockitoAgent.asPath}", "-Xshare:off")
 }
 
 openApi {
