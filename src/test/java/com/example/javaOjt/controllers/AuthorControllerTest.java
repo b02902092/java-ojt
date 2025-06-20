@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @WebMvcTest(controllers = AuthorController.class)
 class AuthorControllerTest {
 
-  private static final String AUTHOR_BASE_URL = "/authors/";
+  private static final String AUTHOR_BASE_URL = "/authors";
 
   private MockMvc mockMvc;
 
@@ -44,7 +44,7 @@ class AuthorControllerTest {
 
     // Perform the GET request
     mockMvc.perform(
-        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "{id}", targetId))
+        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "/{id}", targetId))
       .andExpect(MockMvcResultMatchers.status().isOk())
       .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
       .andReturn();
@@ -65,7 +65,7 @@ class AuthorControllerTest {
 
     // Perform the GET request with the 'withBooks' parameter set to true
     mockMvc.perform(
-        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "{id}", targetId)
+        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "/{id}", targetId)
           .param("withBooks", "true"))
       .andExpect(MockMvcResultMatchers.status().isOk())
       .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
@@ -87,7 +87,7 @@ class AuthorControllerTest {
 
     // Perform the GET request with the 'withBooks' parameter set to false
     mockMvc.perform(
-        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "{id}", targetId)
+        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "/{id}", targetId)
           .param("withBooks", "false"))
       .andExpect(MockMvcResultMatchers.status().isOk())
       .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
@@ -101,7 +101,7 @@ class AuthorControllerTest {
   void getAuthor_invalidAuthorId() throws Exception {
     // Perform the GET request with an invalid author ID
     mockMvc.perform(
-        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "{id}", "aaaa"))
+        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "/{id}", "aaaa"))
       .andExpect(MockMvcResultMatchers.status().isBadRequest())
       .andReturn();
 
@@ -115,7 +115,7 @@ class AuthorControllerTest {
     long targetId = 1;
     // Perform the GET request with an invalid 'withBooks' parameter
     mockMvc.perform(
-        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "{id}", targetId)
+        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "/{id}", targetId)
           .param("withBooks", "invalid"))
       .andExpect(MockMvcResultMatchers.status().isBadRequest())
       .andReturn();

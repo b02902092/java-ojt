@@ -1,9 +1,9 @@
 package com.example.javaOjt.integrationTests;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.example.javaOjt.DBTestBase;
 import com.example.javaOjt.beans.responses.author.GetAuthorResponse;
 import com.example.javaOjt.beans.responses.common.OjtExceptionResponse;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @AutoConfigureMockMvc
 class AuthorIntegrationTest extends DBTestBase {
 
-  private static final String AUTHOR_BASE_URL = "/authors/";
+  private static final String AUTHOR_BASE_URL = "/authors";
 
   @Autowired
   private MockMvc mockMvc;
@@ -31,7 +31,7 @@ class AuthorIntegrationTest extends DBTestBase {
 
     // Perform the GET request to retrieve an existing author
     MvcResult result = mockMvc.perform(
-        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + targetId))
+        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "/" + targetId))
       .andExpect(MockMvcResultMatchers.status().isOk())
       .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
       .andReturn();
@@ -53,7 +53,7 @@ class AuthorIntegrationTest extends DBTestBase {
 
     // Attempt to get an author that does not exist
     MvcResult result = mockMvc.perform(
-        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + targetId))
+        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "/" + targetId))
       .andExpect(MockMvcResultMatchers.status().isNotFound())
       .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
       .andReturn();
@@ -77,7 +77,7 @@ class AuthorIntegrationTest extends DBTestBase {
 
     // Perform the GET request to retrieve an existing author
     MvcResult result = mockMvc.perform(
-        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + targetId)
+        MockMvcRequestBuilders.get(AUTHOR_BASE_URL + "/" + targetId)
           .param("withBooks", "true"))
       .andExpect(MockMvcResultMatchers.status().isOk())
       .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
