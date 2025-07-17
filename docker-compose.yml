@@ -1,7 +1,20 @@
-version: '3.8'
 services:
+  app:
+    container_name: java-ojt-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    tty: true
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://java-ojt-db:5432/library
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
 
-  java-ojt-db:
+  db:
     container_name: java-ojt-db
     image: postgres:latest
     environment:

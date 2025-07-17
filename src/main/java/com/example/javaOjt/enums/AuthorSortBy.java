@@ -17,7 +17,7 @@ public enum AuthorSortBy implements EnumBase {
   public String getCompareValue() {
     return StringUtils.replace(this.name(), "_", "");
   }
-  
+
   @Component
   static class AuthorSortByConverter implements Converter<String, AuthorSortBy> {
 

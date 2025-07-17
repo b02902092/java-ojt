@@ -22,7 +22,7 @@ concepts.
 ### Running the Application
 
 1. Ensure your containerization tool is running.
-2. Run `./gradlew bootRun` to start the application.
+2. Run `docker compose up -d` to start the application.
 
 ### Testing the Application
 
@@ -33,6 +33,6 @@ concepts.
 
 1. Ensure that your containerization tool is running.
 2. Generate the OpenAPI documentation by running `./gradlew generateOpenApiDocs`.
-3. Run the application using `./gradlew bootRun`.
+3. Run the application using `docker compose up -d`.
 4. Access the OpenAPI documentation at `http://localhost:8080/swagger-ui/index.html` or
    `http://localhost:8080/api-docs`.

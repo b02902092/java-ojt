@@ -17,7 +17,7 @@ public enum Order implements EnumBase {
   public String getCompareValue() {
     return StringUtils.replace(this.name(), "_", "");
   }
-  
+
   @Component
   static class OrderConverter implements Converter<String, Order> {
 

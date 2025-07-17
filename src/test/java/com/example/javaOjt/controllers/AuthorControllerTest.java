@@ -28,7 +28,7 @@ class AuthorControllerTest {
   private AuthorService authorService;
 
   @BeforeEach
-  public void setup() {
+  void setup() {
     mockMvc = MockMvcBuilders.standaloneSetup(authorController).build();
   }
 

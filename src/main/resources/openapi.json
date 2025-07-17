@@ -54,7 +54,7 @@
         }
       }
     },
-    "/health-check/": {
+    "/health-check": {
       "get": {
         "tags": [
           "health-check-controller"
